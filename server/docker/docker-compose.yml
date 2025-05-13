@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cookhub
+      - MONGO_INITDB_ROOT_PASSWORD=monsterkill
+      - MONGO_INITDB_DATABASE=cookhub
+
+volumes:
+  mongodb_data:
+    driver: local

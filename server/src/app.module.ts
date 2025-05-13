@@ -1,9 +1,31 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { ConfigModule } from "@nestjs/config";
+import { ThrottlerModule } from "@nestjs/throttler";
+import { MongooseModule } from "@nestjs/mongoose";
+import { RecipesModule } from "./modules/recipes/recipes.module";
+import { IngredientsModule } from "./modules/ingredients/ingredients.module";
 
 @Module({
-  imports: [],
+  imports: [
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60,
+        limit: 20,
+      },
+    ]),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot("mongodb://localhost/cookhub", {
+      authSource: "admin",
+      user: "cookhub",
+      pass: "monsterkill",
+    }),
+    RecipesModule,
+    IngredientsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
