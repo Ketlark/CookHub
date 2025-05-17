@@ -1,32 +1,56 @@
 {
   "name": "app",
+  "main": "index.js",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "build": "rspeedy build",
-    "check": "biome check --write",
-    "dev": "rspeedy dev",
-    "format": "biome format --write",
-    "preview": "rspeedy preview",
-    "test": "vitest run"
+    "dev": "expo start -c",
+    "dev:web": "expo start -c --web",
+    "dev:android": "expo start -c --android",
+    "android": "expo start -c --android",
+    "ios": "expo start -c --ios",
+    "web": "expo start -c --web",
+    "clean": "rm -rf .expo node_modules",
+    "postinstall": "npx tailwindcss -i ./global.css -o ./node_modules/.cache/nativewind/global.css"
   },
   "dependencies": {
-    "@lynx-js/react": "^0.108.0"
+    "@react-navigation/native": "^7.0.0",
+    "@rn-primitives/avatar": "~1.1.0",
+    "@rn-primitives/portal": "~1.2.0",
+    "@rn-primitives/progress": "~1.1.0",
+    "@rn-primitives/slot": "~1.1.0",
+    "@rn-primitives/tooltip": "~1.1.0",
+    "@rn-primitives/types": "~1.1.0",
+    "@tanstack/react-query": "^5.76.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "expo": "^53.0.7",
+    "expo-haptics": "~14.1.4",
+    "expo-linear-gradient": "~14.1.4",
+    "expo-linking": "~7.1.4",
+    "expo-navigation-bar": "~4.2.4",
+    "expo-router": "~5.0.5",
+    "expo-splash-screen": "~0.30.8",
+    "expo-status-bar": "~2.2.3",
+    "expo-system-ui": "~5.0.7",
+    "lucide-react-native": "^0.507.0",
+    "nativewind": "^4.1.23",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-reanimated": "~3.17.5",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "^4.10.0",
+    "react-native-svg": "15.11.2",
+    "react-native-web": "~0.20.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "3.3.5",
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@lynx-js/qrcode-rsbuild-plugin": "^0.3.6",
-    "@lynx-js/react-rsbuild-plugin": "^0.9.9",
-    "@lynx-js/rspeedy": "^0.9.4",
-    "@lynx-js/types": "^3.2.1",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@types/react": "^18.3.21",
-    "jsdom": "^26.1.0",
-    "typescript": "~5.8.3",
-    "vitest": "^3.1.3"
-  },
-  "engines": {
-    "node": ">=18"
+    "@babel/core": "^7.26.0",
+    "@types/react": "~19.0.14",
+    "typescript": "^5.8.3"
   },
   "private": true
 }

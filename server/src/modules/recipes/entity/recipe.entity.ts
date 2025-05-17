@@ -60,6 +60,9 @@ export class RecipeMetadata {
 
   @Prop({ required: true, default: true })
   is_private: boolean;
+
+  @Prop({ required: true })
+  image_url: string;
 }
 
 @Schema({ timestamps: true })

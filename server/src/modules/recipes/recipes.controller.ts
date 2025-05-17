@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Patch, Post } from "@nestjs/common";
 import { RecipesService } from "./recipes.service";
 import { RecipeToCreateDto } from "./dto/recipe_to_create.dto";
+import { RecipeToUpdateDto } from "./dto/recipe_to_update.dto";
 
 @Controller("recipes")
 export class RecipesController {
@@ -17,7 +18,9 @@ export class RecipesController {
   }
 
   @Patch(":id")
-  async update() {}
+  async update(@Body() recipeToUpdate: RecipeToUpdateDto, @Param("id") id: string) {
+    return await this.recipesService.update(id, recipeToUpdate);
+  }
 
   @Post(":id/publish")
   async publish() {}
