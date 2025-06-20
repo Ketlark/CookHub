@@ -1,7 +1,8 @@
-import { Image, SafeAreaView, TouchableOpacity, View, Text } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
-import * as Haptics from 'expo-haptics';
-import { useRouter } from 'expo-router';
+import { TouchableOpacity, View, Text, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
+import { useRouter } from "expo-router";
 
 export default function Wizard() {
   const router = useRouter();
@@ -10,29 +11,24 @@ export default function Wizard() {
     <SafeAreaView className="flex flex-1 bg-orange-50">
       {/* Header Section */}
       <View className="px-6 pt-8 pb-6">
-        <Text className="text-4xl font-bold text-center text-gray-900">
-          Kitchen Lab
-        </Text>
-        <Text className="text-lg text-center text-gray-600 mt-2">
-          Let's create something delicious today
-        </Text>
+        <Text className="text-4xl font-bold text-center text-gray-900">Kitchen Lab</Text>
+        <Text className="text-lg text-center text-gray-600 mt-2">Let's create something delicious today</Text>
       </View>
-
       {/* Cards Section */}
       <View className="flex-1 px-4 pb-6">
         {/* Create New Recipe */}
         <TouchableOpacity
           className="bg-white mb-4 rounded-3xl p-6 shadow-lg"
           style={{
-            shadowColor: '#f97316',
+            shadowColor: "#f97316",
             shadowOffset: { width: 0, height: 4 },
             shadowOpacity: 0.2,
             shadowRadius: 12,
-            elevation: 5
+            elevation: 5,
           }}
           onPress={() => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-            router.push('/recipes/create');
+            router.push("/recipes/create");
           }}
           activeOpacity={0.95}
         >
@@ -52,11 +48,11 @@ export default function Wizard() {
         <TouchableOpacity
           className="bg-white mb-4 rounded-3xl p-6 shadow-lg"
           style={{
-            shadowColor: '#f97316',
+            shadowColor: "#f97316",
             shadowOffset: { width: 0, height: 4 },
             shadowOpacity: 0.2,
             shadowRadius: 12,
-            elevation: 5
+            elevation: 5,
           }}
           onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}
           activeOpacity={0.95}
@@ -77,11 +73,11 @@ export default function Wizard() {
         <TouchableOpacity
           className="bg-white rounded-3xl p-6 shadow-lg"
           style={{
-            shadowColor: '#f97316',
+            shadowColor: "#f97316",
             shadowOffset: { width: 0, height: 4 },
             shadowOpacity: 0.2,
             shadowRadius: 12,
-            elevation: 5
+            elevation: 5,
           }}
           onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)}
           activeOpacity={0.95}
@@ -98,7 +94,6 @@ export default function Wizard() {
           </View>
         </TouchableOpacity>
       </View>
-
       {/* Bottom Note */}
       <View className="px-6 pb-6">
         <View className="bg-orange-100 rounded-2xl p-4">

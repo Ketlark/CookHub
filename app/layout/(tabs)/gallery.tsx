@@ -111,7 +111,7 @@ export default function Gallery() {
   });
 
   return (
-    <SafeAreaView className="flex-1 bg-orange-50">
+    <SafeAreaView className="flex-1 bg-orange-50" edges={['top', 'left', 'right']}>
       {/* Header */}
       <Animated.View entering={FadeInDown.duration(300)} className="px-4 pt-4 pb-2">
         <View className="flex-row justify-between items-center mb-2">
@@ -181,8 +181,11 @@ export default function Gallery() {
         </Animated.View>
       </Animated.View>
       
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View className="flex-1 px-4 pb-6">        
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
+      >
+        <View className="flex-1 px-4">        
           {filteredCollections.length === 0 ? (
             <View className="items-center justify-center py-12">
               <Ionicons name="search" size={48} color="#9CA3AF" />

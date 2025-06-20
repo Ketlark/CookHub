@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
 import { View, Image, Text } from "react-native";
 import { ImageSourcePropType } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type TabIconProps = {
   source: ImageSourcePropType;
@@ -11,10 +12,7 @@ type TabIconProps = {
 const TabIcon = ({ source, label, focused }: TabIconProps) => (
   <View className="flex-1 w-16 items-center">
     <Image source={source} style={{ width: 34, height: 34 }} alt={`${label} tab icon`} />
-    <Text
-      className={`text-xs ${focused ? "font-medium" : "font-light"} text-center ${focused ? "text-foreground" : "text-foreground/50"}`}
-      numberOfLines={1}
-    >
+    <Text className={`text-xs ${focused ? "font-extrabold" : "font-medium"} ${focused ? "text-foreground" : "text-foreground/70"}`} numberOfLines={1}>
       {label}
     </Text>
   </View>
@@ -34,6 +32,8 @@ const tabs = [
 ] as const;
 
 export default function TabLayout() {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tabs>
       {tabs.map(({ name, label, icon }) => (
@@ -43,6 +43,9 @@ export default function TabLayout() {
           options={{
             ...commonTabOptions,
             tabBarIcon: ({ focused }) => <TabIcon source={icon} label={label} focused={focused} />,
+            tabBarStyle: {
+              height: insets.bottom + 60,
+            },
           }}
         />
       ))}

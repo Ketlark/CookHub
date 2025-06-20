@@ -51,7 +51,7 @@ const RecipeList = ({ recipes, isLoading, width }) => (
     style={{ width }}
     showsVerticalScrollIndicator={false}
     className="px-6"
-    contentContainerClassName="gap-3"
+    contentContainerStyle={{ paddingBottom: 120, gap: 12 }}
   >
     {isLoading ? (
       <LoadingSpinner />
@@ -144,8 +144,8 @@ export default function Home() {
   });
 
   return (
-    <SafeAreaView className="flex-1 bg-orange-50">
-      <View className="px-4 pt-2 pb-6">
+    <SafeAreaView className="flex-1 bg-orange-50" edges={['top', 'left', 'right']}>
+      <View className="px-4 pt-2 pb-4">
         <View className="flex-row justify-center items-center">
           <View className="flex-row bg-orange-100/50 rounded-full p-1 relative">
             <Animated.View style={animatedBackgroundStyle} />

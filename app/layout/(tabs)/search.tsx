@@ -1,4 +1,5 @@
-import { SafeAreaView, TextInput, View, ScrollView, Pressable } from "react-native";
+import { TextInput, View, ScrollView, Pressable } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useQuery } from "@tanstack/react-query";
 import { getRecipesQuery } from "@/lib/api";
 import { Text } from "@/components/ui/text";
@@ -92,8 +93,8 @@ export default function Search() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-orange-50">
-      <View className="flex-row items-center px-4 pt-3 pb-6 bg-muted/20">
+    <SafeAreaView className="flex-1 bg-orange-50" edges={['top', 'left', 'right']}>
+      <View className="flex-row items-center px-4 pt-3 pb-4 bg-muted/20">
         <View className="flex-1 relative">
           <TextInput
             className="w-full pl-12 pr-5 py-5 bg-white font-medium rounded-xl drop-shadow-lg"
@@ -126,6 +127,7 @@ export default function Search() {
         className="flex-1" 
         showsVerticalScrollIndicator={false} 
         showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
       >
         {/* Categories Section */}
         <View className="mt-2">
@@ -168,7 +170,7 @@ export default function Search() {
         </View>
 
         {/* Recent Recipes Section */}
-        <View className="mt-2 pb-8">
+        <View className="mt-2">
           <SectionHeader title="Recent Recipes" />
           <ScrollView 
             horizontal 
