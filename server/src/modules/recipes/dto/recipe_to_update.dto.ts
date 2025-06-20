@@ -18,6 +18,7 @@ export class RecipeToUpdateDto {
 
   @IsOptional()
   @IsNotEmpty()
+  x;
   @IsString()
   image_url: string;
 }

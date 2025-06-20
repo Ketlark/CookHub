@@ -1,4 +1,4 @@
-const BASE_URL = "http://172.20.10.4:3000";
+const BASE_URL = "http://172.16.221.0:3000";
 
 export interface Recipe {
   _id: string;
@@ -9,6 +9,7 @@ export interface Recipe {
     image_url: string;
     author: string;
   };
+  is_draft: boolean;
 }
 
 export async function getRecipesQuery(): Promise<Recipe[]> {

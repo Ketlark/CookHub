@@ -1,62 +1,114 @@
-import { SafeAreaView, View } from "react-native";
-import { Text } from "@/components/ui/text";
-import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import * as Haptics from "expo-haptics";
+import { Image, SafeAreaView, TouchableOpacity, View, Text } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import * as Haptics from 'expo-haptics';
+import { useRouter } from 'expo-router';
 
 export default function Wizard() {
+  const router = useRouter();
+
   return (
-    <SafeAreaView className="flex flex-1 items-center bg-background">
-      <Text className="text-4xl font-bold mt-7">Recipe Wizard</Text>
-      <Text className="text-lg font-normal mt-2 mb-4">Time to cook something special ?</Text>
+    <SafeAreaView className="flex flex-1 bg-orange-50">
+      {/* Header Section */}
+      <View className="px-6 pt-8 pb-6">
+        <Text className="text-4xl font-bold text-center text-gray-900">
+          Kitchen Lab
+        </Text>
+        <Text className="text-lg text-center text-gray-600 mt-2">
+          Let's create something delicious today
+        </Text>
+      </View>
 
-      <View className="w-full px-4 pb-4 flex-1 gap-4">
-        <View className="shadow-lg flex-1">
-          <TouchableOpacity
-            className="bg-background dark:bg-muted/50 p-8 rounded-3xl h-full
-                border-0 items-center justify-center
-                active:opacity-90 shadow-2xl shadow-primary/30 dark:shadow-primary-dark/40"
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-            }}
-            activeOpacity={0.9}
-          >
-            <Ionicons name="create" size={32} className="text-primary mb-4" />
-            <Text className="text-xl font-semibold text-foreground mb-2">Create New Recipe</Text>
-            <Text className="text-muted-foreground text-center">Start from scratch with our step-by-step builder</Text>
-          </TouchableOpacity>
-        </View>
+      {/* Cards Section */}
+      <View className="flex-1 px-4 pb-6">
+        {/* Create New Recipe */}
+        <TouchableOpacity
+          className="bg-white mb-4 rounded-3xl p-6 shadow-lg"
+          style={{
+            shadowColor: '#f97316',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 12,
+            elevation: 5
+          }}
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push('/recipes/create');
+          }}
+          activeOpacity={0.95}
+        >
+          <View className="flex-row items-center">
+            <View className="bg-orange-100 p-3 rounded-2xl mr-4">
+              <Ionicons name="restaurant-outline" size={32} color="#f97316" />
+            </View>
+            <View className="flex-1">
+              <Text className="text-xl font-bold text-gray-900 mb-1">Create New Recipe</Text>
+              <Text className="text-gray-600">Design your recipe step by step</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={24} color="#f97316" />
+          </View>
+        </TouchableOpacity>
 
-        <View className="shadow-lg flex-1">
-          <TouchableOpacity
-            className="bg-background dark:bg-muted/50 p-8 rounded-3xl h-full
-                border-0 items-center justify-center
-                active:opacity-90 shadow-2xl shadow-primary/30 dark:shadow-primary-dark/40"
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-            }}
-            activeOpacity={0.9}
-          >
-            <Ionicons name="download" size={32} className="text-primary mb-4" />
-            <Text className="text-xl font-semibold text-foreground mb-2">Import Recipe</Text>
-            <Text className="text-muted-foreground text-center">Bring in recipes from other platforms or files</Text>
-          </TouchableOpacity>
-        </View>
+        {/* Import Recipe */}
+        <TouchableOpacity
+          className="bg-white mb-4 rounded-3xl p-6 shadow-lg"
+          style={{
+            shadowColor: '#f97316',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 12,
+            elevation: 5
+          }}
+          onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}
+          activeOpacity={0.95}
+        >
+          <View className="flex-row items-center">
+            <View className="bg-orange-100 p-3 rounded-2xl mr-4">
+              <Ionicons name="cloud-download-outline" size={32} color="#f97316" />
+            </View>
+            <View className="flex-1">
+              <Text className="text-xl font-bold text-gray-900 mb-1">Import Recipe</Text>
+              <Text className="text-gray-600">Import from other platforms</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={24} color="#f97316" />
+          </View>
+        </TouchableOpacity>
 
-        <View className="shadow-lg flex-1">
-          <TouchableOpacity
-            className="bg-background dark:bg-muted/50 p-8 rounded-3xl h-full
-                border-0 items-center justify-center
-                active:opacity-90 shadow-2xl shadow-primary/30 dark:shadow-primary-dark/40"
-            onPress={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-            }}
-            activeOpacity={0.9}
-          >
-            <Ionicons name="camera" size={32} className="text-primary mb-4" />
-            <Text className="text-xl font-semibold text-foreground mb-2">Import from Photo</Text>
-            <Text className="text-muted-foreground text-center">Scan recipes from photos or images</Text>
-          </TouchableOpacity>
+        {/* Import from Photo */}
+        <TouchableOpacity
+          className="bg-white rounded-3xl p-6 shadow-lg"
+          style={{
+            shadowColor: '#f97316',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 12,
+            elevation: 5
+          }}
+          onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)}
+          activeOpacity={0.95}
+        >
+          <View className="flex-row items-center">
+            <View className="bg-orange-100 p-3 rounded-2xl mr-4">
+              <Ionicons name="camera-outline" size={32} color="#f97316" />
+            </View>
+            <View className="flex-1">
+              <Text className="text-xl font-bold text-gray-900 mb-1">Import from Photo</Text>
+              <Text className="text-gray-600">Scan recipes from images</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={24} color="#f97316" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Bottom Note */}
+      <View className="px-6 pb-6">
+        <View className="bg-orange-100 rounded-2xl p-4">
+          <View className="flex-row items-center mb-2">
+            <Ionicons name="bulb-outline" size={20} color="#f97316" />
+            <Text className="text-orange-700 font-bold ml-2">Pro Tip</Text>
+          </View>
+          <Text className="text-gray-700 text-sm">
+            Did you know? The best chefs recommend writing down your recipe immediately after cooking while the details are still fresh in your mind.
+          </Text>
         </View>
       </View>
     </SafeAreaView>
