@@ -30,6 +30,7 @@ export default function RootLayout() {
           >
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="profile" options={{ headerShown: false }} />
+            <Stack.Screen name="wizard" options={{ headerShown: false }} />
             <Stack.Screen name="recipes/[id]" options={{ headerShown: false }} />
             <Stack.Screen name="recipes/create" options={{ headerShown: false }} />
           </Stack>

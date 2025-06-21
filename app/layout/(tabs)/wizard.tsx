@@ -71,7 +71,7 @@ export default function Wizard() {
 
         {/* Import from Photo */}
         <TouchableOpacity
-          className="bg-white rounded-3xl p-6 shadow-lg"
+          className="bg-white mb-4 rounded-3xl p-6 shadow-lg"
           style={{
             shadowColor: "#f97316",
             shadowOffset: { width: 0, height: 4 },
@@ -93,9 +93,32 @@ export default function Wizard() {
             <Ionicons name="chevron-forward" size={24} color="#f97316" />
           </View>
         </TouchableOpacity>
+
+        {/* Chat with AI Chef - Disabled until premium state is ready */}
+        <View
+          className="bg-gray-100 rounded-3xl p-6 shadow-lg opacity-50"
+          style={{
+            shadowColor: "#9ca3af",
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.1,
+            shadowRadius: 12,
+            elevation: 2,
+          }}
+        >
+          <View className="flex-row items-center">
+            <View className="bg-gray-200 p-3 rounded-2xl mr-4">
+              <Ionicons name="chatbubble-outline" size={32} color="#9ca3af" />
+            </View>
+            <View className="flex-1">
+              <Text className="text-xl font-bold text-gray-500 mb-1">Chat with AI Chef</Text>
+              <Text className="text-gray-400">Coming soon with premium features</Text>
+            </View>
+            <Ionicons name="lock-closed" size={24} color="#9ca3af" />
+          </View>
+        </View>
       </View>
       {/* Bottom Note */}
-      <View className="px-6 pb-6">
+      <View className="px-6">
         <View className="bg-orange-100 rounded-2xl p-4">
           <View className="flex-row items-center mb-2">
             <Ionicons name="bulb-outline" size={20} color="#f97316" />
