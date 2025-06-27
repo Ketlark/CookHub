@@ -18,10 +18,11 @@ import { IngredientsModule } from "./modules/ingredients/ingredients.module";
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot("mongodb://localhost/cookhub", {
-      authSource: "admin",
-      user: "cookhub",
-      pass: "monsterkill",
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async () => ({
+        uri: process.env.MONGOOSE_URI,
+      }),
     }),
     RecipesModule,
     IngredientsModule,
